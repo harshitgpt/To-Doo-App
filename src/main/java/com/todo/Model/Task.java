@@ -29,7 +29,7 @@ public class Task {
 
     @Column(length=500)
     private String description;
-    private boolean completed;
+    private Boolean completed;
 
     @Enumerated(EnumType.STRING)
     private Priority priority;

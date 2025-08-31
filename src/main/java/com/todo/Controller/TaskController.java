@@ -41,4 +41,13 @@ public class TaskController {
         return ResponseEntity.ok("All tasks have been deleted Successfully");
     }
 
+    @PutMapping("/UpdateTask/{id}")
+    public ResponseEntity<Task> UpdateTask(@PathVariable  Long id, @RequestBody Task updateTask)
+    {
+            Task task = taskService.updatedTask(id,updateTask);
+            return  ResponseEntity.ok(task);
+
+    }
+
+
 }

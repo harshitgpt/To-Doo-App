@@ -38,4 +38,28 @@ public class TaskService {
     {
         taskRepository.deleteAll();
     }
+
+    public Task updatedTask(long id ,Task updatedTask)
+    {
+        Task existingTask = taskRepository.findById(id).orElseThrow(()->new RuntimeException("Task not found with id "+ id));
+        if(updatedTask.getTitle()!=null && !updatedTask.getTitle().isEmpty())
+        {
+          existingTask.setTitle(updatedTask.getTitle());
+        }
+        if(updatedTask.getDescription()!=null && !updatedTask.getDescription().isEmpty())
+        {
+            existingTask.setDescription(updatedTask.getDescription());
+        }
+        if(updatedTask.getPriority()!=null)
+        {
+            existingTask.setPriority(updatedTask.getPriority());
+        }
+        if(updatedTask.getCompleted()!=null)
+        {
+         existingTask.setCompleted(updatedTask.getCompleted());
+        }
+
+        return taskRepository.save(existingTask);
+
+    }
 }
